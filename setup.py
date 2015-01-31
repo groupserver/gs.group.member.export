@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 ############################################################################
 #
-# Copyright © 2010, 2011, 2012, 2013, 2015 OnlineGroups.net and
-# Contributors.
-#
+# Copyright © 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -55,9 +53,11 @@ setup(
     install_requires=[
         'setuptools',
         'zope.browserpage',
+        'zope.cachedescriptors',
         'zope.tal',
         'zope.tales',
         'gs.group.base',
+        'gs.group.member.base',
         'gs.profile.json',
     ],
     entry_points="""

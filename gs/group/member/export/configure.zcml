@@ -6,7 +6,7 @@
   <browser:page
     name="export.html"
     for="gs.group.base.interfaces.IGSGroupMarker"
-    class="gs.group.base.GroupPage"
+    class=".view.Export"
     template="browser/templates/export.pt"
     permission="zope2.ManageUsers" />
 

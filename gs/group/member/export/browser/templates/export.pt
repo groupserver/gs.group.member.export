@@ -40,8 +40,13 @@
          metal:fill-slot="body">
       <h1 id="gs-group-member-export-h">
         Export the members of
-          <span class="group"
-                tal:content="view/groupInfo/name">Group</span></h1>
-    </div><!--gs-group-member-export-->
+        <span class="group"
+              tal:content="view/groupInfo/name">Group</span></h1>
+        <ul>
+          <tal:block repeat="memberId view/memberIds">
+            <li tal:content="memberId">A member</li>
+          </tal:block>
+        </ul>
+      </div><!--gs-group-member-export-->
   </body>
 </html>
