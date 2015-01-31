@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@groupserver_layout/page">
+  <head>
+    <title metal:fill-slot="title">
+      Export Members:
+      <tal:block
+        replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
+    </title>
+    <!--TODO: Metadata-->
+    <tal:block metal:fill-slot="metadata">
+      <link rel="up" href="/" title="Site Home"
+            tal:attributes="title string:${view/siteInfo/name} Home;"/>
+      <tal:block
+        replace="structure provider:groupserver.GroupHomepageMetadata">
+        The metadata for the Group page.
+      </tal:block>
+    </tal:block>
+  </head>
+  <body>
+    <ul metal:fill-slot="breadcrumb">
+      <li>
+        <a href="/" class="icon-alone">
+          <span aria-hidden="true" data-icon="&#x2302;"></span>
+          <span class="screen-reader-text">Site home page</span>
+        </a>
+      </li>
+      <li>
+        <a class="group"
+           tal:attributes="href view/groupInfo/relativeURL"
+           tal:content="view/groupInfo/name">This group</a>
+      </li>
+      <li>
+        Export members
+      </li>
+    </ul>
+    <div id="gs-group-member-export" class="gs-content-layout-cols" role="main"
+         aria-labelledby="gs-group-member-export-h"
+         metal:fill-slot="body">
+      <h1 id="gs-group-member-export-h">
+        Export the members of
+          <span class="group"
+                tal:content="view/groupInfo/name">Group</span></h1>
+    </div><!--gs-group-member-export-->
+  </body>
+</html>

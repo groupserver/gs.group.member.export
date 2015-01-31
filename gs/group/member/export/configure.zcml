@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="gs.group.member.export">
+
+  <browser:page
+    name="export.html"
+    for="gs.group.base.interfaces.IGSGroupMarker"
+    class="gs.group.base.GroupPage"
+    template="browser/templates/export.pt"
+    permission="zope2.ManageUsers" />
+
+</configure>
