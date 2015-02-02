@@ -19,7 +19,8 @@ Export group member information as a CSV
 Introduction
 ============
 
-This product supplies the `Export page`_ for a GroupServer_ group.
+This product supplies the `Export page`_, the `Members JSON
+data`_, and the `Export JavaScript`_ for a GroupServer_ group.
 
 Export page
 ===========
@@ -32,6 +33,23 @@ a CSV file using JavaScript.
 
 .. _gs.profile.json: https://github.com/groupserver/gs.profile.json
 
+Members JSON data
+=================
+
+The members JSON data (``members.json`` in the group context) is
+a JSON list of all the members in the group. Each member is
+represented by a nickname, if set, or the user identifier for
+their profile. 
+
+To ensure privacy, only administrators of the group can retrieve
+members JSON object.
+
+Export JavaScript
+=================
+
+The JavaScript ``gs-group-members-export-20150202.js`` retrieves
+the `members JSON data`_ and then, for each member, retrieves the
+profile as a JSON object [#profileJSON]_.
 
 Resources
 =========
@@ -44,5 +62,8 @@ Resources
 .. _GroupServer.org: http://groupserver.org/
 .. _OnlineGroups.Net: https://onlinegroups.net
 .. _Michael JasonSmith: http://groupserver.org/p/mpj17
+
+.. [#profileJSON] See the ``gs.profile.json`` product 
+                  <https://github.com/groupserver/gs.profile.json>
 
 ..  LocalWords:  CSV JSON
