@@ -11,8 +11,9 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 jQuery.noConflict();
 
-function GSGroupMemberExport (parserURL) {
-    var members=null, toProcess=null, processed=null, currMember=null;
+function GSGroupMemberExport (parserURL, tableSelector) {
+    var members=null, toProcess=null, processed=null, currMember=null,
+        table=null;
 
     function members_request_success(data, textStatus, jqXHR) {
         toProcess = members = data;
@@ -38,9 +39,36 @@ function GSGroupMemberExport (parserURL) {
         }
     }//member_next
 
+    function add_header_to_table(data) {
+        var i=null, thead=null, tfoot=null, trHead=null, trFoot=null, th=null;
+        thead = table.children('thead');
+        tfoot = table.children('tfoot');
+        trHead = thead.append('<tr>');
+        trFoot = tfoot.append('<tr>');
+        for (i in data) {
+            th = '<th>' + i + '</th>';
+            trHead.append(th);
+            trFoot.append(th);
+        }
+    }//add_header_to_table
+
     function profile_request_success(data, textStatus, jqXHR) {
+        var i=null, thead=null, tbody=null, tr=null, td=null;
+        thead = table.children('thead');
+        if (thead.children('tr').length == 0) {
+            add_header_to_table(data);
+        }
+        tbody = table.children('tbody');
+        tr = tbody.append('<tr>');
+        for (i in data) {
+            if (data[i] == null) {
+                td = tr.append('<td>&#160;</td>');
+            } else {
+                td = tr.append('<td class="'+ i +'">' + data[i] + '</td>');
+                console.info(td);
+            }
+        }
         processed.push(data['id']);
-        console.info(data['fn'])
         member_next();
     }//profile_request_success
 
@@ -92,6 +120,7 @@ function GSGroupMemberExport (parserURL) {
     }//send_request
     
     function init() {
+        table = jQuery(tableSelector);
         send_members_request();
     }//init
     init(); // Note: automatic execution
@@ -100,5 +129,6 @@ function GSGroupMemberExport (parserURL) {
 jQuery(window).load(function () {
     var scriptElement=null, exporter=null;
     scriptElement = jQuery('#gs-group-member-export-js');
-    exporter = GSGroupMemberExport(scriptElement.data('members-url'));
+    exporter = GSGroupMemberExport(scriptElement.data('members-url'),
+                                   scriptElement.data('table'));
 });
