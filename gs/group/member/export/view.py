@@ -13,6 +13,7 @@
 #
 ############################################################################
 from __future__ import absolute_import, unicode_literals
+from json import dumps as dump_json
 from zope.cachedescriptors.property import Lazy
 from gs.group.base import GroupPage
 from gs.group.member.base import get_group_userids
@@ -21,7 +22,17 @@ from gs.group.member.base import get_group_userids
 class Export(GroupPage):
     'The Export Group Members page'
 
+
+class MembersJSON(GroupPage):
+    'The list of group-members as a JSON object'
+
     @Lazy
     def memberIds(self):
         retval = get_group_userids(self.context, self.groupInfo)
+        return retval
+
+    def __call__(self):
+        self.request.response.setHeader(b'Content-Type',
+                                        b'application/json')
+        retval = dump_json(self.memberIds)
         return retval

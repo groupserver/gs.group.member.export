@@ -42,11 +42,6 @@
         Export the members of
         <span class="group"
               tal:content="view/groupInfo/name">Group</span></h1>
-        <ul>
-          <tal:block repeat="memberId view/memberIds">
-            <li tal:content="memberId">A member</li>
-          </tal:block>
-        </ul>
       </div><!--gs-group-member-export-->
   </body>
 </html>

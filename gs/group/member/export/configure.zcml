@@ -9,5 +9,10 @@
     class=".view.Export"
     template="browser/templates/export.pt"
     permission="zope2.ManageUsers" />
+  <browser:page
+    name="members.json"
+    for="gs.group.base.interfaces.IGSGroupMarker"
+    class=".view.MembersJSON"
+    permission="zope2.ManageUsers" />
 
 </configure>
