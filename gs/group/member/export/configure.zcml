@@ -14,5 +14,9 @@
     for="gs.group.base.interfaces.IGSGroupMarker"
     class=".view.MembersJSON"
     permission="zope2.ManageUsers" />
+  <browser:resource
+    name="gs-group-member-export-20150202.js"
+    file="browser/javascript/export.js"
+    permission="zope2.Public" />
 
 </configure>

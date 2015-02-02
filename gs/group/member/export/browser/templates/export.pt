@@ -43,5 +43,10 @@
         <span class="group"
               tal:content="view/groupInfo/name">Group</span></h1>
       </div><!--gs-group-member-export-->
+      <script metal:fill-slot="javascript" id="gs-group-member-export-js"
+              type="text/javascript"
+              data-members-url="members.json"
+              tal:attributes="data-members-url string:${view/groupInfo/relativeURL}/members.json"
+              src="/++resource++gs-group-member-export-20150202.js"> </script>
   </body>
 </html>
