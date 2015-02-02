@@ -52,10 +52,12 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'SQLAlchemy',
         'zope.browserpage',
         'zope.cachedescriptors',
         'zope.tal',
         'zope.tales',
+        'gs.database',
         'gs.group.base',
         'gs.group.member.base',
         'gs.profile.json',
