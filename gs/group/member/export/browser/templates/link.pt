@@ -1,4 +1,8 @@
-<li id="gs-group-member-export-link">
+<li xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    i18n:domain="gs.group.member.export"
+    id="gs-group-member-export-link">
   <a tal:attributes="href string:${view/groupInfo/relativeURL}/export.html"
-     href="export.html"><strong>Export</strong> members</a>
+     href="export.html"
+     i18n:translate="admin-link"><strong>Export</strong> members</a>
 </li>

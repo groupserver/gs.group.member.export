@@ -165,7 +165,7 @@ jQuery(window).load(function () {
     generateButton.removeAttr('href');
     generateButton.click(function () {
         jQuery(this).attr('disabled', 'disabled')
-            .text('Generating\u2026');
+            .text(scriptElement.data('generate-present-continuous'));
         exporter.generate();});
 
     saveButton = jQuery(scriptElement.data('save-button'));
@@ -174,7 +174,7 @@ jQuery(window).load(function () {
 
     progressBar = jQuery(scriptElement.data('progress-bar'));
     progressBar.on(exporter.GENERATED_EVENT, function () {
-        generateButton.text('Generated');
+        generateButton.text(scriptElement.data('generate-past'));
         saveButton.removeAttr('disabled');
     });
 });

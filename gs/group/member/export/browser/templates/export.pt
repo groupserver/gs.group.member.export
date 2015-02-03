@@ -1,10 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="gs.group.member.export"
       metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title">
-      Export Members:
+      <tal:block i18n:translate="export-members">Export members</tal:block>:
       <tal:block
         replace="string:${view/groupInfo/name}: ${view/siteInfo/name}"/>
     </title>
@@ -31,21 +33,19 @@
            tal:attributes="href view/groupInfo/relativeURL"
            tal:content="view/groupInfo/name">This group</a>
       </li>
-      <li>
-        Export members
-      </li>
+      <li i18n:translate="export-members">Export members</li>
     </ul>
     <div id="gs-group-member-export" class="gs-content-layout-cols" role="main"
          aria-labelledby="gs-group-member-export-h"
          metal:fill-slot="body">
-      <h1 id="gs-group-member-export-h">
+      <h1 id="gs-group-member-export-h" i18n:translate="admin-link">
         Export the members of
-        <span class="group"
+        <span class="group" i18n:name="groupName"
               tal:content="view/groupInfo/name">Group</span></h1>
-        <p class="muted intro">
+        <p class="muted intro" i18n:translate="intro">
           To generate a CSV of all the profile-information for
           the members of
-          <span class="group"
+          <span class="group" i18n:name="groupName"
                 tal:content="view/groupInfo/name">Group</span>
           click the <samp class="button">Generate</samp> button.
           You will be able to save this information after all the
@@ -53,9 +53,11 @@
         </p>
         <div class="btn-group">
           <a id="gs-group-member-export-generate" tabindex="1"
-             class="btn" href="#">Generate</a>
+             class="btn" href="#"
+            i18n:translate="generate-future">Generate</a>
           <a id="gs-group-member-export-save" tabindex="2"
-             class="btn" href="#" data-icon="&#xe002;">Save</a>
+             class="btn" href="#" data-icon="&#xe002;"
+             i18n:translate="save">Save</a>
         </div><!--btn-group-->
         <div class="progress">
           <div id="gs-group-member-export-progress"
@@ -68,6 +70,10 @@
               data-generate-button="#gs-group-member-export-generate"
               data-save-button="#gs-group-member-export-save"
               data-progress-bar="#gs-group-member-export-progress"
+              data-generate-present-continuous="Generating&#8230;"
+              data-generate-past="Generated"
+              i18n:attributes="data-generate-present-continuous
+                               data-generate-past"
               tal:attributes="data-members-url string:${view/groupInfo/relativeURL}/members.json"
               src="/++resource++gs-group-member-export-20150202.js"> </script>
   </body>
