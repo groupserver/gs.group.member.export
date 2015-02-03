@@ -1,0 +1,4 @@
+<li id="gs-group-member-export-link">
+  <a tal:attributes="href string:${view/groupInfo/relativeURL}/export.html"
+     href="export.html"><strong>Export</strong> members</a>
+</li>

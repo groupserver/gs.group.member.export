@@ -57,9 +57,12 @@ setup(
         'zope.cachedescriptors',
         'zope.tal',
         'zope.tales',
+        'zope.viewlet',
         'gs.database',
         'gs.group.base',
         'gs.group.member.base',
+        'gs.group.member.info',
+        'gs.group.member.viewlet',
         'gs.profile.json',
     ],
     entry_points="""
