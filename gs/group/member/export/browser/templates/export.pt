@@ -38,7 +38,7 @@
     <div id="gs-group-member-export" class="gs-content-layout-cols" role="main"
          aria-labelledby="gs-group-member-export-h"
          metal:fill-slot="body">
-      <h1 id="gs-group-member-export-h" i18n:translate="admin-link">
+      <h1 id="gs-group-member-export-h" i18n:translate="export-h1">
         Export the members of
         <span class="group" i18n:name="groupName"
               tal:content="view/groupInfo/name">Group</span></h1>
