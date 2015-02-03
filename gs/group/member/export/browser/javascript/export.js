@@ -13,10 +13,11 @@ jQuery.noConflict();
 
 function GSGroupMemberExport (parserURL, tableSelector) {
     var members=null, toProcess=null, processed=null, currMember=null,
-        table=null;
+        membersTable=null;
 
     function members_request_success(data, textStatus, jqXHR) {
         toProcess = members = data;
+        membersTable = [];
         processed = [];
         member_next();
     }//success
@@ -26,9 +27,6 @@ function GSGroupMemberExport (parserURL, tableSelector) {
     }//error
 
     function profile_error(jqXHR, textStatus, errorThrown) {
-        var msg = '';
-        msg = 'Issue with ' + currMember;
-        console.warn(msg);
         member_next();
     }//profile_error
 
@@ -36,39 +34,43 @@ function GSGroupMemberExport (parserURL, tableSelector) {
         currMember = toProcess.pop();
         if (currMember) {
             send_profile_request(currMember);
+        } else {
+            dump_csv();
         }
     }//member_next
 
-    function add_header_to_table(data) {
-        var i=null, thead=null, tfoot=null, trHead=null, trFoot=null, th=null;
-        thead = table.children('thead');
-        tfoot = table.children('tfoot');
-        trHead = thead.append('<tr>');
-        trFoot = tfoot.append('<tr>');
-        for (i in data) {
-            th = '<th>' + i + '</th>';
-            trHead.append(th);
-            trFoot.append(th);
+    function dump_csv() {
+        // Based on 
+        // <http://www.zachhunter.com/2010/11/download-json-to-csv-using-javascript/>
+        var outstr='';
+        for (var row = 0; row < membersTable.length; row++) {
+            var outLine = '';
+            for (var field in membersTable[row]) {
+                var cell=null, outCell='';
+                if(outLine != '') {
+                    outLine += ',';
+                }
+                cell = membersTable[row][field];
+                if (cell == null) {
+                    cell = '';
+                } else if (typeof(cell) !== 'string') {
+                    cell = cell.toString();
+                }
+                cell = cell.replace(/\"/g,'""').replace(/\n/g,'\\n');
+                outCell = '"' + cell  + '"';
+                outLine += outCell;
+            }
+            outstr += outLine + '\r\n';
         }
-    }//add_header_to_table
+        window.open('data:text/csv;charset=utf-8,' + escape(outstr));
+    }//dump_csv
 
     function profile_request_success(data, textStatus, jqXHR) {
-        var i=null, thead=null, tbody=null, tr=null, td=null;
-        thead = table.children('thead');
-        if (thead.children('tr').length == 0) {
-            add_header_to_table(data);
+        if (data['email'].length == 0) {
+            console.info('Skipping ' + data['id']);
+        } else {
+            membersTable.push(data);
         }
-        tbody = table.children('tbody');
-        tr = tbody.append('<tr>');
-        for (i in data) {
-            if (data[i] == null) {
-                td = tr.append('<td>&#160;</td>');
-            } else {
-                td = tr.append('<td class="'+ i +'">' + data[i] + '</td>');
-                console.info(td);
-            }
-        }
-        processed.push(data['id']);
         member_next();
     }//profile_request_success
 
@@ -120,7 +122,6 @@ function GSGroupMemberExport (parserURL, tableSelector) {
     }//send_request
     
     function init() {
-        table = jQuery(tableSelector);
         send_members_request();
     }//init
     init(); // Note: automatic execution
@@ -129,6 +130,5 @@ function GSGroupMemberExport (parserURL, tableSelector) {
 jQuery(window).load(function () {
     var scriptElement=null, exporter=null;
     scriptElement = jQuery('#gs-group-member-export-js');
-    exporter = GSGroupMemberExport(scriptElement.data('members-url'),
-                                   scriptElement.data('table'));
+    exporter = GSGroupMemberExport(scriptElement.data('members-url'));
 });

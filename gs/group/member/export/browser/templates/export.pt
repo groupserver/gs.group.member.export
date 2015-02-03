@@ -17,17 +17,6 @@
         The metadata for the Group page.
       </tal:block>
     </tal:block>
-    <style metal:fill-slot="style">
-      table {
-        table-layout: fixed;
-      }
-      table .biography {
-        overflow: hidden;
-        white-space: nowrap;
-        height: 1em;
-        max-width: 10em;
-      }
-    </style>
   </head>
   <body>
     <ul metal:fill-slot="breadcrumb">
@@ -53,24 +42,10 @@
         Export the members of
         <span class="group"
               tal:content="view/groupInfo/name">Group</span></h1>
-        <table id="gs-group-member-export-members">
-          <caption>
-            The members of
-            <span class="group"
-                  tal:content="view/groupInfo/name">Group</span>
-          </caption>
-          <thead>
-          </thead>
-          <tfoot>
-          </tfoot>
-          <tbody>
-          </tbody>
-        </table><!--gs-group-member-export-members-->
       </div><!--gs-group-member-export-->
       <script metal:fill-slot="javascript" id="gs-group-member-export-js"
               type="text/javascript"
               data-members-url="members.json"
-              data-table="#gs-group-member-export-members"
               tal:attributes="data-members-url string:${view/groupInfo/relativeURL}/members.json"
               src="/++resource++gs-group-member-export-20150202.js"> </script>
   </body>
