@@ -11,12 +11,14 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 jQuery.noConflict();
 
-function GSGroupMemberExport (parserURL, tableSelector) {
+function GSGroupMemberExport (parserURL, progressBarSelector) {
     var members=null, toProcess=null, processed=null, currMember=null,
-        membersTable=null;
+        membersTable=null, progressBar=null, 
+        GENERATED='generated_event';
 
     function members_request_success(data, textStatus, jqXHR) {
-        toProcess = members = data;
+        toProcess = data.slice(0);  // Copy it
+        members = data;  // Reference it
         membersTable = [];
         processed = [];
         member_next();
@@ -31,12 +33,16 @@ function GSGroupMemberExport (parserURL, tableSelector) {
     }//profile_error
 
     function member_next() {
+        var pc=0;
         currMember = toProcess.pop();
         if (currMember) {
             send_profile_request(currMember);
         } else {
-            dump_csv();
+            // Raise the GENERATED event.
+            progressBar.trigger(GENERATED);
         }
+        pc = ((members.length - toProcess.length) / (members.length * 1.0)) * 100;
+        progressBar.css('width', pc.toString()+'%')
     }//member_next
 
     function dump_csv() {
@@ -122,13 +128,38 @@ function GSGroupMemberExport (parserURL, tableSelector) {
     }//send_request
     
     function init() {
-        send_members_request();
+        progressBar = jQuery(progressBarSelector);
     }//init
     init(); // Note: automatic execution
+
+    return {
+        generate: function () {send_members_request();},
+        save: function () {dump_csv();},
+        GENERATED_EVENT: GENERATED
+    };
 } // GSGroupMemberExport
 
 jQuery(window).load(function () {
-    var scriptElement=null, exporter=null;
+    var scriptElement=null, exporter=null, saveButton=null, generateButton=null,
+        progressBar=null;
     scriptElement = jQuery('#gs-group-member-export-js');
-    exporter = GSGroupMemberExport(scriptElement.data('members-url'));
+    exporter = GSGroupMemberExport(scriptElement.data('members-url'),
+                                   scriptElement.data('progress-bar'));
+
+    generateButton = jQuery(scriptElement.data('generate-button'));
+    generateButton.removeAttr('href');
+    generateButton.click(function () {
+        jQuery(this).attr('disabled', 'disabled')
+            .text('Generating\u2026');
+        exporter.generate();});
+
+    saveButton = jQuery(scriptElement.data('save-button'));
+    saveButton.removeAttr('href').attr('disabled', 'disabled');
+    saveButton.click(exporter.save);
+
+    progressBar = jQuery(scriptElement.data('progress-bar'));
+    progressBar.on(exporter.GENERATED_EVENT, function () {
+        generateButton.text('Generated');
+        saveButton.removeAttr('disabled');
+    });
 });

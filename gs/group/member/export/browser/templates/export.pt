@@ -42,10 +42,32 @@
         Export the members of
         <span class="group"
               tal:content="view/groupInfo/name">Group</span></h1>
+        <p class="muted intro">
+          To generate a CSV of all the profile-information for
+          the members of
+          <span class="group"
+                tal:content="view/groupInfo/name">Group</span>
+          click the <samp class="button">Generate</samp> button.
+          You will be able to save this information after all the
+          profile data has been downloaded.
+        </p>
+        <div class="btn-group">
+          <a id="gs-group-member-export-generate" tabindex="1"
+             class="btn" href="#">Generate</a>
+          <a id="gs-group-member-export-save" tabindex="2"
+             class="btn" href="#" data-icon="&#xe002;">Save</a>
+        </div><!--btn-group-->
+        <div class="progress">
+          <div id="gs-group-member-export-progress"
+               class="bar bar-progress"></div>
+        </div><!--progress-->
       </div><!--gs-group-member-export-->
       <script metal:fill-slot="javascript" id="gs-group-member-export-js"
               type="text/javascript"
               data-members-url="members.json"
+              data-generate-button="#gs-group-member-export-generate"
+              data-save-button="#gs-group-member-export-save"
+              data-progress-bar="#gs-group-member-export-progress"
               tal:attributes="data-members-url string:${view/groupInfo/relativeURL}/members.json"
               src="/++resource++gs-group-member-export-20150202.js"> </script>
   </body>
