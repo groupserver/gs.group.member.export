@@ -45,14 +45,29 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
         progressBar.css('width', pc.toString()+'%')
     }//member_next
 
+    function quote_cell(value) {
+        var retval=null;
+        retval = '"' + value.replace(/\"/g,'""').replace(/\n/g,'\\n') + '"';
+        return retval
+    }
+
     function dump_csv() {
         // Based on 
         // <http://www.zachhunter.com/2010/11/download-json-to-csv-using-javascript/>
-        var outstr='';
+        var outstr='', outLine='';
+        // Add the header
+        for (var field in membersTable[0]) {
+            if(outLine != '') {
+                outLine += ',';
+            }
+            outLine += quote_cell(field);
+        }
+        outstr += outLine + '\r\n';
+        // Add the body
         for (var row = 0; row < membersTable.length; row++) {
-            var outLine = '';
+            outLine = '';
             for (var field in membersTable[row]) {
-                var cell=null, outCell='';
+                var cell=null;
                 if(outLine != '') {
                     outLine += ',';
                 }
@@ -62,13 +77,13 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
                 } else if (typeof(cell) !== 'string') {
                     cell = cell.toString();
                 }
-                cell = cell.replace(/\"/g,'""').replace(/\n/g,'\\n');
-                outCell = '"' + cell  + '"';
-                outLine += outCell;
+                outLine += quote_cell(cell);
             }
             outstr += outLine + '\r\n';
         }
-        window.open('data:text/csv;charset=utf-8,' + escape(outstr));
+        // Open the "Save as" dialog
+        window.open('data:text/csv;charset=utf-8,' + escape(outstr),
+                   'members.csv');
     }//dump_csv
 
     function profile_request_success(data, textStatus, jqXHR) {
