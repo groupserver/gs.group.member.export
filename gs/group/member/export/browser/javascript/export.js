@@ -49,12 +49,12 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
         var retval=null;
         retval = '"' + value.replace(/\"/g,'""').replace(/\n/g,'\\n') + '"';
         return retval
-    }
+    }//quote_cell
 
     function dump_csv() {
         // Based on 
         // <http://www.zachhunter.com/2010/11/download-json-to-csv-using-javascript/>
-        var outstr='', outLine='';
+        var retval='', outLine='';
         // Add the header
         for (var field in membersTable[0]) {
             if(outLine != '') {
@@ -62,7 +62,7 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
             }
             outLine += quote_cell(field);
         }
-        outstr += outLine + '\r\n';
+        retval += outLine + '\r\n';
         // Add the body
         for (var row = 0; row < membersTable.length; row++) {
             outLine = '';
@@ -79,11 +79,9 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
                 }
                 outLine += quote_cell(cell);
             }
-            outstr += outLine + '\r\n';
+            retval += outLine + '\r\n';
         }
-        // Open the "Save as" dialog
-        window.open('data:text/csv;charset=utf-8,' + escape(outstr),
-                   'members.csv');
+        return retval;
     }//dump_csv
 
     function profile_request_success(data, textStatus, jqXHR) {
@@ -149,7 +147,7 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
 
     return {
         generate: function () {send_members_request();},
-        save: function () {dump_csv();},
+        get_csv: function () {return dump_csv();},
         GENERATED_EVENT: GENERATED
     };
 } // GSGroupMemberExport
@@ -166,15 +164,20 @@ jQuery(window).load(function () {
     generateButton.click(function () {
         jQuery(this).attr('disabled', 'disabled')
             .text(scriptElement.data('generate-present-continuous'));
-        exporter.generate();});
+        exporter.generate();
+    });
 
     saveButton = jQuery(scriptElement.data('save-button'));
     saveButton.removeAttr('href').attr('disabled', 'disabled');
-    saveButton.click(exporter.save);
 
     progressBar = jQuery(scriptElement.data('progress-bar'));
     progressBar.on(exporter.GENERATED_EVENT, function () {
+        var csv=null, dataURI=null;
         generateButton.text(scriptElement.data('generate-past'));
+
+        csv = exporter.get_csv();
+        dataURI = 'data:text/csv;charset=utf-8,' + escape(csv);
+        saveButton.attr('href', dataURI);
         saveButton.removeAttr('disabled');
     });
 });

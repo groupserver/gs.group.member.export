@@ -57,6 +57,9 @@
             i18n:translate="generate-future">Generate</a>
           <a id="gs-group-member-export-save" tabindex="2"
              class="btn" href="#" data-icon="&#xe002;"
+             download="members.csv"
+             tal:attributes="download string:${view/siteInfo/id}-${view/groupInfo/id}-members.csv"
+             i18n:attributes="download"
              i18n:translate="save">Save</a>
         </div><!--btn-group-->
         <div class="progress">
