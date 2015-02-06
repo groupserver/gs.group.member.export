@@ -47,16 +47,16 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
 
     function quote_cell(value) {
         var retval=null;
-        retval = '"' + value.replace(/\"/g,'""').replace(/\n/g,'\\n') + '"';
+        retval = '"' + value.replace(/\"/g,'""') + '"';
         return retval
     }//quote_cell
 
     function dump_csv() {
         // Based on 
         // <http://www.zachhunter.com/2010/11/download-json-to-csv-using-javascript/>
-        var retval='', outLine='';
+        var retval='', outLine='', field=null, row=null, cell=null;
         // Add the header
-        for (var field in membersTable[0]) {
+        for (field in membersTable[0]) {
             if(outLine != '') {
                 outLine += ',';
             }
@@ -64,10 +64,10 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
         }
         retval += outLine + '\r\n';
         // Add the body
-        for (var row = 0; row < membersTable.length; row++) {
+        for (row = 0; row < membersTable.length; row++) {
             outLine = '';
-            for (var field in membersTable[row]) {
-                var cell=null;
+            for (field in membersTable[row]) {
+                cell=null;
                 if(outLine != '') {
                     outLine += ',';
                 }
@@ -147,7 +147,13 @@ function GSGroupMemberExport (parserURL, progressBarSelector) {
 
     return {
         generate: function () {send_members_request();},
-        get_csv: function () {return dump_csv();},
+        get_csv_link: function () {
+            var csv=null, csvBlob=null, retval=null;
+            csv = dump_csv();
+            csvBlob = new Blob([csv], {type: 'text/csv'});
+            retval = URL.createObjectURL(csvBlob);
+            return retval;
+        },
         GENERATED_EVENT: GENERATED
     };
 } // GSGroupMemberExport
@@ -172,11 +178,10 @@ jQuery(window).load(function () {
 
     progressBar = jQuery(scriptElement.data('progress-bar'));
     progressBar.on(exporter.GENERATED_EVENT, function () {
-        var csv=null, dataURI=null;
+        var dataURI=null;
         generateButton.text(scriptElement.data('generate-past'));
 
-        csv = exporter.get_csv();
-        dataURI = 'data:text/csv;charset=utf-8,' + escape(csv);
+        dataURI = exporter.get_csv_link()
         saveButton.attr('href', dataURI);
         saveButton.removeAttr('disabled');
     });
