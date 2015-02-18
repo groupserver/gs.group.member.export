@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[gs-group-member-export.gs-group-member-export-pot]
+file_filter = gs/group/member/export/locales/<lang>/LC_MESSAGES/gs.group.member.export.po
+source_file = gs/group/member/export/locales/gs.group.member.export.pot
+source_lang = en
+type = PO
+
