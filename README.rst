@@ -55,6 +55,7 @@ Resources
 =========
 
 - Code repository: https://github.com/groupserver/gs.group.member.export
+- Translations: https://www.transifex.com/projects/p/gs-group-member-export/
 - Questions and comments to http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
 
