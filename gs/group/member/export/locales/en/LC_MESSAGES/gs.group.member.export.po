@@ -17,35 +17,34 @@ msgstr ""
 #. Default: "<strong>Export</strong> members"
 #: ./browser/templates/link.pt:5
 msgid "admin-link"
-msgstr ""
+msgstr "<strong>Export</strong> members"
 
 #. Default: "Generating…"
 #: ./browser/templates/export.pt:67
 msgid "data-generate-past"
-msgstr ""
+msgstr "Generating…"
 
 #. Default: "Export the members of ${groupName}"
 #: ./browser/templates/export.pt:43
 msgid "export-h1"
-msgstr ""
+msgstr "Export the members of ${groupName}"
 
 #. Default: "Export members"
 #: ./browser/templates/export.pt:9
 msgid "export-members"
-msgstr ""
+msgstr "Export members"
 
 #. Default: "Generate"
 #: ./browser/templates/export.pt:55
 msgid "generate-future"
-msgstr ""
+msgstr "Generate"
 
 #. Default: "To generate a CSV of all the profile-information for the members of ${groupName} click the <samp class=\"button\">Generate</samp> button. You will be able to save this information after all the profile data has been downloaded."
 #: ./browser/templates/export.pt:48
 msgid "intro"
-msgstr ""
+msgstr "To generate a CSV of all the profile-information for the members of ${groupName} click the <samp class=\"button\">Generate</samp> button. You will be able to save this information after all the profile data has been downloaded."
 
 #. Default: "Save"
 #: ./browser/templates/export.pt:58
 msgid "save"
-msgstr ""
-
+msgstr "Save"

@@ -60,7 +60,7 @@
              class="btn" href="#" data-icon="&#xe002;"
              download="members.csv"
              tal:attributes="download string:${view/siteInfo/id}-${view/groupInfo/id}-members.csv"
-             i18n:attributes="download"
+             i18n:attributes="download button-download-filename"
              i18n:translate="save">Save</a>
         </div><!--btn-group-->
         <div class="progress">
@@ -76,8 +76,8 @@
               data-progress-bar="#gs-group-member-export-progress"
               data-generate-present-continuous="Generating&#8230;"
               data-generate-past="Generated"
-              i18n:attributes="data-generate-present-continuous
-                               data-generate-past"
+              i18n:attributes="data-generate-present-continuous generate-verb-present-continuous;
+                               data-generate-past generate-verb-past;"
               tal:attributes="data-members-url string:${view/groupInfo/relativeURL}/members.json"
               src="/++resource++gs-group-member-export-20150202.js"> </script>
   </body>
