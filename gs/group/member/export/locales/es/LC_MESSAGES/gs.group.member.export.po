@@ -1,18 +1,17 @@
 # 
 # Translators:
-# Alice Rose <heldinz@posteo.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.group.member.export\n"
 "POT-Creation-Date: 2015-02-03 19:43+0000\n"
-"PO-Revision-Date: 2015-02-26 16:21+0000\n"
-"Last-Translator: Alice Rose <heldinz@posteo.de>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/gs-group-member-export/language/de/)\n"
+"PO-Revision-Date: 2015-02-18 19:48+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/gs-group-member-export/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Domain: DOMAIN\n"
-"Language: de\n"
+"Language: es\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -21,27 +20,27 @@ msgstr ""
 #. Default: "<strong>Export</strong> members"
 #: ./browser/templates/link.pt:5
 msgid "admin-link"
-msgstr "Mitglieder <strong>exportieren</strong>"
+msgstr ""
 
 #. Default: "Generating…"
 #: ./browser/templates/export.pt:67
 msgid "data-generate-past"
-msgstr "Erzeugt..."
+msgstr ""
 
 #. Default: "Export the members of ${groupName}"
 #: ./browser/templates/export.pt:43
 msgid "export-h1"
-msgstr "Mitglieder von ${groupName} exportieren"
+msgstr ""
 
 #. Default: "Export members"
 #: ./browser/templates/export.pt:9
 msgid "export-members"
-msgstr "Mitglieder exportieren"
+msgstr ""
 
 #. Default: "Generate"
 #: ./browser/templates/export.pt:55
 msgid "generate-future"
-msgstr "Erzeugen"
+msgstr ""
 
 #. Default: "To generate a CSV of all the profile-information for the members
 #. of ${groupName} click the <samp class=\"button\">Generate</samp> button.
@@ -54,4 +53,4 @@ msgstr ""
 #. Default: "Save"
 #: ./browser/templates/export.pt:58
 msgid "save"
-msgstr "Speichern"
+msgstr ""
