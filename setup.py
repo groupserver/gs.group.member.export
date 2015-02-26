@@ -37,6 +37,7 @@ setup(
         "Intended Audience :: Developers",
         'License :: OSI Approved :: Zope Public License',
         "Natural Language :: English",
+        "Natural Language :: German",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python",
         "Programming Language :: JavaScript",
