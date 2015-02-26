@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.group.member.export\n"
-"POT-Creation-Date: 2015-02-03 19:43+0000\n"
-"PO-Revision-Date: 2015-02-18 19:48+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-02-26 22:46+0000\n"
+"PO-Revision-Date: 2015-02-26 22:48+0000\n"
+"Last-Translator: Michael JasonSmith <mpj17@onlinegroups.net>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/gs-group-member-export/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,35 +22,46 @@ msgstr ""
 msgid "admin-link"
 msgstr ""
 
-#. Default: "Generating…"
-#: ./browser/templates/export.pt:67
-msgid "data-generate-past"
-msgstr ""
-
 #. Default: "Export the members of ${groupName}"
-#: ./browser/templates/export.pt:43
+#: ./browser/templates/export.pt:47
 msgid "export-h1"
 msgstr ""
 
 #. Default: "Export members"
-#: ./browser/templates/export.pt:9
+#: ./browser/templates/export.pt:40
 msgid "export-members"
 msgstr ""
 
+#. Default: "Export members: ${groupName}: ${siteName}"
+#: ./browser/templates/export.pt:13
+msgid "export-members-page-title"
+msgstr ""
+
 #. Default: "Generate"
-#: ./browser/templates/export.pt:55
+#: ./browser/templates/export.pt:59
 msgid "generate-future"
+msgstr ""
+
+#. Default: "Generated"
+#: ./browser/templates/export.pt:73
+msgid "generate-verb-past"
+msgstr ""
+
+#. Default: "Generating…"
+# Generating…
+#: ./browser/templates/export.pt:73
+msgid "generate-verb-present-continuous"
 msgstr ""
 
 #. Default: "To generate a CSV of all the profile-information for the members
 #. of ${groupName} click the <samp class=\"button\">Generate</samp> button.
 #. You will be able to save this information after all the profile data has
 #. been downloaded."
-#: ./browser/templates/export.pt:48
+#: ./browser/templates/export.pt:52
 msgid "intro"
 msgstr ""
 
 #. Default: "Save"
-#: ./browser/templates/export.pt:58
+#: ./browser/templates/export.pt:62
 msgid "save"
 msgstr ""
