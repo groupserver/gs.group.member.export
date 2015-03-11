@@ -1,10 +1,11 @@
 # 
 # Translators:
+# Razique Mahroua <razique.mahroua@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.group.member.export\n"
 "POT-Creation-Date: 2015-02-26 22:46+0000\n"
-"PO-Revision-Date: 2015-02-26 22:48+0000\n"
+"PO-Revision-Date: 2015-03-11 19:50+0000\n"
 "Last-Translator: Michael JasonSmith <mpj17@onlinegroups.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/gs-group-member-export/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -20,38 +21,38 @@ msgstr ""
 #. Default: "<strong>Export</strong> members"
 #: ./browser/templates/link.pt:5
 msgid "admin-link"
-msgstr ""
+msgstr "<strong>Exporter</strong> les membres"
 
 #. Default: "Export the members of ${groupName}"
 #: ./browser/templates/export.pt:47
 msgid "export-h1"
-msgstr ""
+msgstr "Exporter les membres du groupe ${groupName}"
 
 #. Default: "Export members"
 #: ./browser/templates/export.pt:40
 msgid "export-members"
-msgstr ""
+msgstr "Exporter les membres"
 
 #. Default: "Export members: ${groupName}: ${siteName}"
 #: ./browser/templates/export.pt:13
 msgid "export-members-page-title"
-msgstr ""
+msgstr "Exporter les membres : ${groupName} : ${siteName}"
 
 #. Default: "Generate"
 #: ./browser/templates/export.pt:59
 msgid "generate-future"
-msgstr ""
+msgstr "Créer"
 
 #. Default: "Generated"
 #: ./browser/templates/export.pt:73
 msgid "generate-verb-past"
-msgstr ""
+msgstr "Créé"
 
 #. Default: "Generating…"
 # Generating…
 #: ./browser/templates/export.pt:73
 msgid "generate-verb-present-continuous"
-msgstr ""
+msgstr "En cours de création..."
 
 #. Default: "To generate a CSV of all the profile-information for the members
 #. of ${groupName} click the <samp class=\"button\">Generate</samp> button.
@@ -59,9 +60,9 @@ msgstr ""
 #. been downloaded."
 #: ./browser/templates/export.pt:52
 msgid "intro"
-msgstr ""
+msgstr "Pour générer un fichier au format CSV contenant toutes les informations des utilisateurs pour le groupe ${groupName}, veuillez cliquer sur le boutton <samp class=\"button\">Générer</samp>. Il vous sera possible de sauvegarder ces informations une fois que les données auront été téléchargées."
 
 #. Default: "Save"
 #: ./browser/templates/export.pt:62
 msgid "save"
-msgstr ""
+msgstr "Sauvegarder"
