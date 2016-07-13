@@ -1,14 +1,16 @@
 # 
 # Translators:
 # Alice Rose <heldinz@posteo.de>, 2015
-# Michael JasonSmith <mpj17@onlinegroups.net>, 2015
+# Clara Adele von Randow <cvrandow@freenet.de>, 2015
+# Michael JasonSmith <mpj17@ldots.org>, 2015
+# Stephan G. Blendinger <stephanblendinger@me.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.group.member.export\n"
 "POT-Creation-Date: 2015-02-26 22:46+0000\n"
-"PO-Revision-Date: 2015-02-26 22:52+0000\n"
-"Last-Translator: Michael JasonSmith <mpj17@onlinegroups.net>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/gs-group-member-export/language/de/)\n"
+"PO-Revision-Date: 2016-06-05 12:16+0000\n"
+"Last-Translator: Stephan G. Blendinger <stephanblendinger@me.com>\n"
+"Language-Team: German (http://www.transifex.com/groupserver/gs-group-member-export/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,13 +49,13 @@ msgstr "Erzeugen"
 #. Default: "Generated"
 #: ./browser/templates/export.pt:73
 msgid "generate-verb-past"
-msgstr ""
+msgstr "erzeugt"
 
 #. Default: "Generating…"
 # Generating…
 #: ./browser/templates/export.pt:73
 msgid "generate-verb-present-continuous"
-msgstr "Erzeugt..."
+msgstr "Erzeuge..."
 
 #. Default: "To generate a CSV of all the profile-information for the members
 #. of ${groupName} click the <samp class=\"button\">Generate</samp> button.
@@ -61,7 +63,7 @@ msgstr "Erzeugt..."
 #. been downloaded."
 #: ./browser/templates/export.pt:52
 msgid "intro"
-msgstr ""
+msgstr "Um eine CSV-Datei der gesamten Profil-Information für die Mitglieder von ${groupName} zu erzeugen, klicken Sie auf die Schaltfläche <samp class=\"button\">Erzeugen</samp>. Sie können diese Informationen dann sichern, nachdem die Profil-Daten heruntergeladen wurden."
 
 #. Default: "Save"
 #: ./browser/templates/export.pt:62
