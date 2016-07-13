@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.0.3 (2016-07-12)
+------------------
+
+* [DE] Updating the German localisation, thanks to
+  `Stephan G. Blendinger`_ and Cousin Clara.
+
+.. _Stephan G. Blendinger:
+   https://www.transifex.com/user/profile/stephanblendinger/
+
+
 1.0.2 (2015-03-11)
 ------------------
 
